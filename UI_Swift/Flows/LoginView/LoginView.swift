@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var password = ""
     
     @State private var showMainScreen = false
+    @State private var showIncorrentCredentialsWarning = false
     
     
     var body: some View {
@@ -27,7 +28,6 @@ struct LoginView: View {
                     VStack {
                         Text("VK Mobile")
                             .logoStyle()
-                        Divider()
                         HStack {
                             Text("Login:")
                                 .font(.title)
@@ -46,15 +46,18 @@ struct LoginView: View {
                         }
                     }.vStackStyle()
                         .fullScreenCover(isPresented: $showMainScreen) {
-                            UserPreviewView()
+                            NavigationTabView()
                         }
-                    Button(action: showHomeScreen) {
+                        .alert(isPresented: $showIncorrentCredentialsWarning, content: { Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
+                        })
+                    Button(action: verifyLoginData) {
                         Text("Log in")
                             .buttonStyle()
-                    }.padding(.top, 25)
-                        .padding(.bottom, 20)
-                        .disabled(login.isEmpty || password.isEmpty)
-                }.padding(.top, 50)
+                    }
+                    .padding(.top, 25)
+                    .padding(.bottom, 20)
+                }
+                .padding(.top, 50)
             }
         }
     }
@@ -67,8 +70,13 @@ struct LoginView: View {
     )
         .removeDuplicates()
     
-    func showHomeScreen() {
-        showMainScreen.toggle()
+    private func verifyLoginData() {
+        if login == "1" && password == "1" {
+            showMainScreen.toggle()
+        } else {
+            showIncorrentCredentialsWarning = true
+        }
+        password = ""
     }
 }
 
