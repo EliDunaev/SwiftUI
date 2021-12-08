@@ -6,11 +6,12 @@
 //
 
 import Foundation
-struct Group: Identifiable{
-    var id: Int
-    var groupAvatar: String
-    var name: String
-    var description: String
+
+struct Group: Identifiable {
+    let id: Int
+    let groupAvatar: String
+    let name: String
+    let description: String
 }
 
 let groupData = [

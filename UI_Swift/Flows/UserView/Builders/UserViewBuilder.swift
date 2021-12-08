@@ -1,5 +1,5 @@
 //
-//  GroupViewBuilder.swift
+//  UserViewBuilder.swift
 //  UI_Swift
 //
 //  Created by Илья Дунаев on 30.11.2021.
@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct GroupAvatarImage: View {
-    var content: Image
+struct UserAvatarImage: View {
+    let content: Image
     
     init(@ViewBuilder content: () -> Image) {
         self.content = content()
@@ -18,7 +18,6 @@ struct GroupAvatarImage: View {
     var body: some View {
         content
             .resizable()
-            .scaledToFill()
-            .groupAvatarStyle()
+            .userAvatarStyle()
     }
 }
