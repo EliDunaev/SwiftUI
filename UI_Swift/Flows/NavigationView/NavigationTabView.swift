@@ -15,7 +15,10 @@ struct NavigationTabView: View {
     var body: some View {
         TabView(selection: $tabSelection) {
             NavigationView {
-                UserPreviewView()
+                UserPreviewView(viewModel: UserViewModel(
+                    apiService: APIRequest(),
+                    realmStorage: UsersDatabaseService()
+                ))
             }
             .tabItem {
                 Image(systemName: "person.3.fill")
@@ -24,7 +27,9 @@ struct NavigationTabView: View {
             .tag(0)
             
             NavigationView {
-                GroupPreviewView()
+                GroupPreviewView(viewModel: GroupViewModel(
+                    apiService: APIRequest(),
+                    realmStorage: GroupsDatabaseService()))
             }
             .tabItem {
                 Image(systemName: "person.2.crop.square.stack.fill")
@@ -33,7 +38,11 @@ struct NavigationTabView: View {
             .tag(1)
             
             NavigationView {
-                NewsPreviewView()
+                NewsPreviewView(viewModel: NewsViewModel(
+                    apiService: APIRequest(),
+                    realmStorage: NewsDatabaseService(),
+                    realmNewsGroups: NewsGroupsDatabaseService()
+                ))
             }
             .tabItem {
                 Image(systemName: "newspaper.fill")
@@ -44,8 +53,8 @@ struct NavigationTabView: View {
     }
 }
 
-struct NavigationTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationTabView()
-    }
-}
+//struct NavigationTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationTabView()
+//    }
+//}

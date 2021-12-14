@@ -9,12 +9,12 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
+    
     @State private var login = ""
     @State private var password = ""
     
     @State private var showMainScreen = false
     @State private var showIncorrentCredentialsWarning = false
-    
     
     var body: some View {
         ZStack {
@@ -46,7 +46,11 @@ struct LoginView: View {
                         }
                     }.vStackStyle()
                         .fullScreenCover(isPresented: $showMainScreen) {
-                            NavigationTabView()
+                            if UserDefaults.standard.getVkToken() == "" {
+                                VKLoginWebView()
+                            } else {
+                                NavigationTabView()
+                            }
                         }
                         .alert(isPresented: $showIncorrentCredentialsWarning, content: { Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
                         })
@@ -86,8 +90,8 @@ extension UIApplication {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
