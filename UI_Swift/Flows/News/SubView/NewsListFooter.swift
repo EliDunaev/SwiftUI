@@ -8,28 +8,31 @@
 import SwiftUI
 
 struct NewsListFooter: View {
+    
+    var footerData: NewsModel
+    
     var body: some View {
         
         HStack {
             HStack {
                 Image(systemName: "heart")
-                Text("200")
+                Text("\(footerData.likes)")
                 Image(systemName: "message")
-                Text("15")
+                Text("\(footerData.comments)")
                 Image(systemName: "arrowshape.turn.up.right")
-                Text("46")
+                Text("\(footerData.reposts)")
             }
             Spacer()
             HStack {
-                Text("476")
+                Text("\(footerData.views)")
                 Image(systemName: "eye")
             }
         }
     }
 }
 
-struct NewsListFooter_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsListFooter()
-    }
-}
+//struct NewsListFooter_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewsListFooter()
+//    }
+//}

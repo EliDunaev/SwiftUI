@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+          "version": "5.4.4"
+        }
+      },
+      {
         "package": "ASCollectionView",
         "repositoryURL": "https://github.com/apptekstudios/ASCollectionView.git",
         "state": {
@@ -17,6 +26,33 @@
           "branch": null,
           "revision": "62745d7780deef4a023a792a1f8f763ec7bf9705",
           "version": "1.2.0"
+        }
+      },
+      {
+        "package": "DynamicJSON",
+        "repositoryURL": "https://github.com/illescasDaniel/DynamicJson.git",
+        "state": {
+          "branch": null,
+          "revision": "2ee5fea4d0a8adc7d9a26fecde04d20e639f5dc7",
+          "version": "1.0.1"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "bdbbd57f411a0f4e72b359113dbc6d23fdf96680",
+          "version": "10.20.0"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "c3c11a841642ac93c27bd1edd61f989fc0bfb809",
+          "version": "11.6.1"
         }
       }
     ]
