@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		79D4733D2C288DDB0BCA5FBD /* Pods_UI_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC09C3CB3A0E7315B05D777 /* Pods_UI_Swift.framework */; };
+		99127B0F276E2DAB00B42F37 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99127B0E276E2DAB00B42F37 /* PhotoCell.swift */; };
 		99467E1C275F6A6400D262FC /* NewsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467E1B275F6A6400D262FC /* NewsPreviewView.swift */; };
 		99467E20275F839300D262FC /* SearchBarPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467E1F275F839300D262FC /* SearchBarPreviewView.swift */; };
 		99467E22275F875F00D262FC /* NewsListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467E21275F875F00D262FC /* NewsListFooter.swift */; };
+		99482B99276E192400E10DE5 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482B98276E192400E10DE5 /* UserAvatarView.swift */; };
 		995D143B27650118001F284C /* VKLoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D143A27650118001F284C /* VKLoginWebView.swift */; };
 		995D143E27650ECD001F284C /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D143D27650ECD001F284C /* UserDefaults.swift */; };
 		99AB225E275D6EC6000AACA7 /* NavigationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB225D275D6EC6000AACA7 /* NavigationTabView.swift */; };
@@ -39,6 +41,8 @@
 		99BCBE24276665CD00F48482 /* LoadFriendsToRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCBE23276665CD00F48482 /* LoadFriendsToRealm.swift */; };
 		99BCBE26276665E900F48482 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCBE25276665E900F48482 /* ParseData.swift */; };
 		99BCBE2C2766696800F48482 /* UserPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCBE2B2766696800F48482 /* UserPhotosViewModel.swift */; };
+		99C5B29A276EA23D009DD5DA /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 99C5B299276EA23D009DD5DA /* QGrid */; };
+		99C5B29C276EADF4009DD5DA /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5B29B276EADF4009DD5DA /* AnimationModifiers.swift */; };
 		99C68CC427510DB800607E03 /* UI_SwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68CC327510DB800607E03 /* UI_SwiftApp.swift */; };
 		99C68CC627510DB800607E03 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68CC527510DB800607E03 /* LoginView.swift */; };
 		99C68CC827510DB900607E03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99C68CC727510DB900607E03 /* Assets.xcassets */; };
@@ -46,6 +50,7 @@
 		99C9D73127651E940054F9D7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9D73027651E940054F9D7 /* UserModel.swift */; };
 		99C9D7342765240D0054F9D7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9D7332765240D0054F9D7 /* UserViewModel.swift */; };
 		99D6CE9D2760BDD900221381 /* UserPhotosPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D6CE9C2760BDD900221381 /* UserPhotosPreviewView.swift */; };
+		99D6E8C8276E76150026EAE5 /* PhotoGalleryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D6E8C7276E76150026EAE5 /* PhotoGalleryFooter.swift */; };
 		99DA8830276617A600A2540C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA882F276617A600A2540C /* APIRequest.swift */; };
 		99DA88322766183200A2540C /* UserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA88312766183200A2540C /* UserDatabaseService.swift */; };
 		99DA88342766183F00A2540C /* UsersDatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA88332766183F00A2540C /* UsersDatabaseServiceProtocol.swift */; };
@@ -56,9 +61,11 @@
 
 /* Begin PBXFileReference section */
 		5CC09C3CB3A0E7315B05D777 /* Pods_UI_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99127B0E276E2DAB00B42F37 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		99467E1B275F6A6400D262FC /* NewsPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPreviewView.swift; sourceTree = "<group>"; };
 		99467E1F275F839300D262FC /* SearchBarPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarPreviewView.swift; sourceTree = "<group>"; };
 		99467E21275F875F00D262FC /* NewsListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListFooter.swift; sourceTree = "<group>"; };
+		99482B98276E192400E10DE5 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		995D143A27650118001F284C /* VKLoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginWebView.swift; sourceTree = "<group>"; };
 		995D143D27650ECD001F284C /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		99AB225D275D6EC6000AACA7 /* NavigationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabView.swift; sourceTree = "<group>"; };
@@ -87,6 +94,7 @@
 		99BCBE23276665CD00F48482 /* LoadFriendsToRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFriendsToRealm.swift; sourceTree = "<group>"; };
 		99BCBE25276665E900F48482 /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		99BCBE2B2766696800F48482 /* UserPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosViewModel.swift; sourceTree = "<group>"; };
+		99C5B29B276EADF4009DD5DA /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		99C68CC027510DB800607E03 /* UI_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UI_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C68CC327510DB800607E03 /* UI_SwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_SwiftApp.swift; sourceTree = "<group>"; };
 		99C68CC527510DB800607E03 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -95,6 +103,7 @@
 		99C9D73027651E940054F9D7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		99C9D7332765240D0054F9D7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		99D6CE9C2760BDD900221381 /* UserPhotosPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosPreviewView.swift; sourceTree = "<group>"; };
+		99D6E8C7276E76150026EAE5 /* PhotoGalleryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryFooter.swift; sourceTree = "<group>"; };
 		99DA882F276617A600A2540C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		99DA88312766183200A2540C /* UserDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabaseService.swift; sourceTree = "<group>"; };
 		99DA88332766183F00A2540C /* UsersDatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDatabaseServiceProtocol.swift; sourceTree = "<group>"; };
@@ -110,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C5B29A276EA23D009DD5DA /* QGrid in Frameworks */,
 				79D4733D2C288DDB0BCA5FBD /* Pods_UI_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +153,14 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		99482B97276E191100E10DE5 /* AvatarView */ = {
+			isa = PBXGroup;
+			children = (
+				99482B98276E192400E10DE5 /* UserAvatarView.swift */,
+			);
+			path = AvatarView;
+			sourceTree = "<group>";
+		};
 		995D143C27650EB6001F284C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +192,7 @@
 		99B6FA0D27562235006C0523 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				99C5B29D276EB019009DD5DA /* Modifiers */,
 				99D6CE9B2760BDC500221381 /* UserPhotos */,
 				99D6CE992760BA7F00221381 /* SearchView */,
 				99467E1A275F69F700D262FC /* News */,
@@ -189,25 +208,16 @@
 			isa = PBXGroup;
 			children = (
 				995D143A27650118001F284C /* VKLoginWebView.swift */,
-				99B6FA0F275622C6006C0523 /* Modifiers */,
 				99C68CC527510DB800607E03 /* LoginView.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
 		};
-		99B6FA0F275622C6006C0523 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				99B6FA102756245B006C0523 /* LoginViewModifiers.swift */,
-			);
-			path = Modifiers;
-			sourceTree = "<group>";
-		};
 		99B6FA1227562C9A006C0523 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				99482B97276E191100E10DE5 /* AvatarView */,
 				99C9D732276523E20054F9D7 /* ViewModel */,
-				99B6FA1527562D39006C0523 /* Modifiers */,
 				99B6FA1627562D6D006C0523 /* UserPreviewView.swift */,
 			);
 			path = Users;
@@ -228,14 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				99B6FA242756715D006C0523 /* GroupPreviewModifiers.swift */,
-			);
-			path = Modifiers;
-			sourceTree = "<group>";
-		};
-		99B6FA1527562D39006C0523 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				99B6FA1B2756581F006C0523 /* UserPreviewModifiers.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -319,6 +321,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		99C5B29D276EB019009DD5DA /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				99B6FA1B2756581F006C0523 /* UserPreviewModifiers.swift */,
+				99C5B29B276EADF4009DD5DA /* AnimationModifiers.swift */,
+				99B6FA102756245B006C0523 /* LoginViewModifiers.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		99C68CB727510DB800607E03 = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +410,8 @@
 			children = (
 				99BCBE2A2766693A00F48482 /* ViewModel */,
 				99D6CE9C2760BDD900221381 /* UserPhotosPreviewView.swift */,
+				99127B0E276E2DAB00B42F37 /* PhotoCell.swift */,
+				99D6E8C7276E76150026EAE5 /* PhotoGalleryFooter.swift */,
 			);
 			path = UserPhotos;
 			sourceTree = "<group>";
@@ -430,6 +444,7 @@
 			);
 			name = UI_Swift;
 			packageProductDependencies = (
+				99C5B299276EA23D009DD5DA /* QGrid */,
 			);
 			productName = UI_Swift;
 			productReference = 99C68CC027510DB800607E03 /* UI_Swift.app */;
@@ -460,6 +475,7 @@
 			);
 			mainGroup = 99C68CB727510DB800607E03;
 			packageReferences = (
+				99C5B298276EA23D009DD5DA /* XCRemoteSwiftPackageReference "QGrid" */,
 			);
 			productRefGroup = 99C68CC127510DB800607E03 /* Products */;
 			projectDirPath = "";
@@ -533,6 +549,7 @@
 				995D143B27650118001F284C /* VKLoginWebView.swift in Sources */,
 				99BCBE19276664D900F48482 /* PhotoDatabaseServiceProtocol.swift in Sources */,
 				99BCBE202766659900F48482 /* AsyncOperation.swift in Sources */,
+				99482B99276E192400E10DE5 /* UserAvatarView.swift in Sources */,
 				99B6FA1C2756581F006C0523 /* UserPreviewModifiers.swift in Sources */,
 				99D6CE9D2760BDD900221381 /* UserPhotosPreviewView.swift in Sources */,
 				99467E20275F839300D262FC /* SearchBarPreviewView.swift in Sources */,
@@ -548,10 +565,13 @@
 				99BB7C1627675478007655A9 /* GroupsDatabaseService.swift in Sources */,
 				99DA88322766183200A2540C /* UserDatabaseService.swift in Sources */,
 				99B6FA112756245B006C0523 /* LoginViewModifiers.swift in Sources */,
+				99127B0F276E2DAB00B42F37 /* PhotoCell.swift in Sources */,
+				99D6E8C8276E76150026EAE5 /* PhotoGalleryFooter.swift in Sources */,
 				99BB7C1827675494007655A9 /* GroupsDatabaseServiceProtocol.swift in Sources */,
 				99467E1C275F6A6400D262FC /* NewsPreviewView.swift in Sources */,
 				99467E22275F875F00D262FC /* NewsListFooter.swift in Sources */,
 				99C68CC627510DB800607E03 /* LoginView.swift in Sources */,
+				99C5B29C276EADF4009DD5DA /* AnimationModifiers.swift in Sources */,
 				99B6FA2227567124006C0523 /* GroupPreviewView.swift in Sources */,
 				99BB7C2427675C16007655A9 /* NewsGroupsModel.swift in Sources */,
 				99C9D73127651E940054F9D7 /* UserModel.swift in Sources */,
@@ -775,6 +795,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99C5B298276EA23D009DD5DA /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99C5B299276EA23D009DD5DA /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C5B298276EA23D009DD5DA /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 99C68CB827510DB800607E03 /* Project object */;
 }

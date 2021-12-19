@@ -17,18 +17,21 @@ struct UserPhotosPreviewView: View {
     @ObservedResults(PhotoModel.self) var photos
     
     var body: some View {
-        ASCollectionView(data: photos) { photo, context in
-            KFImage(URL(string: photo.url!))
-                .resizable()
-                .cancelOnDisappear(true)
-                .frame(width: 83, height: 83)
-        }.layout {
+        ASCollectionView(data: photos, dataID: \.url) { photo, _ in
+            if photo.id == self.viewModel.userID {
+                PhotoCell(photos: photo)
+                PhotoGalleryFooter(photoFooterData: photo)
+            }
+        }
+        .layout {
             ASCollectionLayoutSection.grid(
-                layoutMode: .fixedNumberOfColumns(4),
-                itemSpacing: 3,
-                lineSpacing: 3
+                layoutMode: .adaptive(withMinItemSize: 120),
+                itemSpacing: 1,
+                lineSpacing: 1
             )
         }
+        .navigationTitle("Фото Альбом")
         .onAppear(perform: self.viewModel.getPhotoData)
     }
+    
 }

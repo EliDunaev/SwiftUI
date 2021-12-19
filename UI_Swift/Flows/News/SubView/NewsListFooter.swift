@@ -30,9 +30,3 @@ struct NewsListFooter: View {
         }
     }
 }
-
-//struct NewsListFooter_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewsListFooter()
-//    }
-//}

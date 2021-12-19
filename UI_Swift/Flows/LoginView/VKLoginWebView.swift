@@ -75,9 +75,6 @@ class WebViewNavigationDelegate: NSObject, WKNavigationDelegate, ObservableObjec
             return
         }
         
-        UserDefaults.standard.set(token, forKey: "vkToken")
-        UserDefaults.standard.set(userIdString, forKey: "userID")
-        
         UserDefaults.standard.setVkToken(value: token)
         UserDefaults.standard.setUserID(value: userIdString)
         

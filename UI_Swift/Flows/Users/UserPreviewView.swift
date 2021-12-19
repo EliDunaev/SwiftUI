@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import RealmSwift
 import Kingfisher
+import CoreGraphics
+import UIKit
 
 struct UserPreviewView: View {
     
@@ -28,32 +30,29 @@ struct UserPreviewView: View {
                             realmStorage: PhotoDatabaseService(),
                             userID: user.id!
                         ))) {
-                        HStack {
-                            if user.online == 1 {
-                                Image(systemName: "circle.fill")
-                                    .resizable()
-                                    .userOnlineStyle()
-                            } else {
-                                Image(systemName: "circle.fill")
-                                    .resizable()
-                                    .userOfflineStyle()
-                            }
-                            
-                            KFImage(URL(string: user.photo100!)!)
-                                .cancelOnDisappear(true)
-                                .resizable()
-                                .userAvatarStyle()
-                            
-                            VStack(alignment: .leading) {
-                                Text(user.firstName! + " " + user.lastName!)
-                                    .userNameStyle()
-                                if user.online == 0 {
-                                    Text("Был в сети... ")
-                                        .userOfflineTextStyle()
+                            HStack {
+                                if user.online == 1 {
+                                    Image(systemName: "circle.fill")
+                                        .resizable()
+                                        .userOnlineStyle()
+                                } else {
+                                    Image(systemName: "circle.fill")
+                                        .resizable()
+                                        .userOfflineStyle()
+                                }
+                                
+                                UserAvatarView(userPhotos: user)
+                                
+                                VStack(alignment: .leading) {
+                                    Text(user.firstName! + " " + user.lastName!)
+                                        .userNameStyle()
+                                    if user.online == 0 {
+                                        Text("Был в сети... ")
+                                            .userOfflineTextStyle()
+                                    }
                                 }
                             }
                         }
-                    }
                 }
             }
             .onAppear(perform: self.viewModel.getFriendsData)
@@ -62,11 +61,9 @@ struct UserPreviewView: View {
                 LoginView()
             }
             .navigationTitle("Список друзей")
-            .navigationBarItems(trailing: Button(action: {
-                showLoginView()
-            })
-                                {Text("Log Out")}
-            )
+            .navigationBarItems(trailing:
+            Button(action: { showLoginView() })
+            { Text("Log Out") })
         }
         .navigationBarHidden(true)
     }
@@ -75,9 +72,3 @@ struct UserPreviewView: View {
         showLoginScreen.toggle()
     }
 }
-
-//struct UserPreviewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserPreviewView()
-//    }
-//}
