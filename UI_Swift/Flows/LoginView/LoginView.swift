@@ -16,6 +16,8 @@ struct LoginView: View {
     @State private var showMainScreen = false
     @State private var showIncorrentCredentialsWarning = false
     
+    @AppStorage("vkToken") var token: String?
+    
     var body: some View {
         ZStack {
             GeometryReader { _ in
@@ -46,10 +48,10 @@ struct LoginView: View {
                         }
                     }.vStackStyle()
                         .fullScreenCover(isPresented: $showMainScreen) {
-                            if UserDefaults.standard.getVkToken() == "" {
-                                VKLoginWebView()
-                            } else {
+                            if self.token != nil {
                                 NavigationTabView()
+                            } else {
+                                VKLoginWebView()
                             }
                         }
                         .alert(isPresented: $showIncorrentCredentialsWarning, content: { Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
@@ -58,6 +60,7 @@ struct LoginView: View {
                         Text("Log in")
                             .buttonStyle()
                     }
+                    .animation(.spring(), value: 45)
                     .padding(.top, 25)
                     .padding(.bottom, 20)
                 }

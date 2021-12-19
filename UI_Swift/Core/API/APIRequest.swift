@@ -60,7 +60,7 @@ final class APIRequest {
         let parameters: Parameters = [
             "owner_id": userID,
             "photo_sizes": 1,
-            "count": 5,
+            "count": 20,
             "extended": 1,
             "no_service_albums": 1,
             "access_token": token,

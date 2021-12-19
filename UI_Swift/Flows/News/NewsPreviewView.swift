@@ -14,15 +14,20 @@ struct NewsPreviewView: View {
     @ObservedObject var viewModel: NewsViewModel
     
     @ObservedResults(NewsModel.self) var news
+    @ObservedResults(NewsGroupsModel.self) var newsGroups
     
     var body: some View {
         NavigationView {
             List() {
-                ForEach(news) { news in
+                ForEach(news, id: \.date) { news in
                     VStack {
-                        NewsListHeader(newsData: news)
-                            .frame(maxWidth: .infinity,
-                                   alignment: .leading)
+                        ForEach(newsGroups) { groups in
+                            if groups.id == news.sourceId {
+                                NewsListHeader(newsGroups: groups, newsDate: news.date)
+                                    .frame(maxWidth: .infinity,
+                                           alignment: .leading)
+                            }
+                        }
                         
                         Spacer()
                         
@@ -48,11 +53,4 @@ struct NewsPreviewView: View {
         .navigationBarHidden(true)
         .onAppear(perform: self.viewModel.getNews)
     }
-    
 }
-
-//struct NewsPreviewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewsPreviewView()
-//    }
-//}
