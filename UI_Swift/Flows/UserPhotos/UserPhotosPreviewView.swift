@@ -33,5 +33,4 @@ struct UserPhotosPreviewView: View {
         .navigationTitle("Фото Альбом")
         .onAppear(perform: self.viewModel.getPhotoData)
     }
-    
 }

@@ -19,7 +19,6 @@ struct UserAvatarView: View {
             .userAvatarStyle()
             .userAvatarAnimationStyle()
     }
-    
 }
 
 

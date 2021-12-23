@@ -45,7 +45,6 @@ struct VKLoginWebView: UIViewRepresentable {
 
 class WebViewNavigationDelegate: NSObject, WKNavigationDelegate, ObservableObject {
     
-    
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard let url = navigationResponse.response.url,
               url.path == "/blank.html",
@@ -78,12 +77,9 @@ class WebViewNavigationDelegate: NSObject, WKNavigationDelegate, ObservableObjec
         UserDefaults.standard.setVkToken(value: token)
         UserDefaults.standard.setUserID(value: userIdString)
         
+        // Что-то я совсем туплю с переходом с этого экрана на экран пользователей, после получения токена...
+//        LoginViewModel().isUserLoggedIn = true
+        
         decisionHandler(.cancel)
     }
 }
-
-//struct VKLoginWebView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VKLoginWebView()
-//    }
-//}

@@ -17,26 +17,24 @@ struct GroupPreviewView: View {
     @ObservedResults(GroupsModel.self) var groups
     
     var body: some View {
-        List {
-            ForEach(groups) { group in
-                HStack {
-                    KFImage(URL(string: group.photo50!))
-                        .groupAvatarStyle()
-                    VStack(alignment: .leading) {
-                        Text(group.name!)
-                            .groupNameStyle()
+        NavigationView {
+            List {
+                ForEach(groups) { group in
+                    HStack {
+                        KFImage(URL(string: group.photo50!))
+                            .groupAvatarStyle()
+                        VStack(alignment: .leading) {
+                            Text(group.name!)
+                                .groupNameStyle()
+                        }
                     }
                 }
             }
+            .onAppear(perform: self.viewModel.getGroups)
+            .listStyle(GroupedListStyle())
+            .navigationTitle("Список групп")
         }
-        .onAppear(perform: self.viewModel.getGroups)
-        .listStyle(GroupedListStyle())
-        .navigationTitle("Список групп")
+        .navigationBarHidden(true)
+
     }
 }
-
-//struct GroupPreviewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GroupPreviewView()
-//    }
-//}
