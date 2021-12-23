@@ -10,15 +10,19 @@ import SwiftUI
 
 struct NavigationTabView: View {
     
-    @State private var tabSelection = 0
+    @ObservedObject var viewModel: NavigationMainTabModel
+//
+//    let tabCoordinator: MainTabBarCoordinator
+    
+//    @State private var tabSelection = 0
     
     var body: some View {
-        TabView(selection: $tabSelection) {
+        TabView(selection: self.$viewModel.tabSelection) {
             NavigationView {
-                UserPreviewView(viewModel: UserViewModel(
-                    apiService: APIRequest(),
-                    realmStorage: UsersDatabaseService()
-                ))
+//                UserPreviewView(viewModel: UserViewModel(
+//                    apiService: APIRequest(),
+//                    realmStorage: UsersDatabaseService()
+//                ))
             }
             .tabItem {
                 Image(systemName: "person.3.fill")
@@ -27,9 +31,9 @@ struct NavigationTabView: View {
             .tag(0)
             
             NavigationView {
-                GroupPreviewView(viewModel: GroupViewModel(
-                    apiService: APIRequest(),
-                    realmStorage: GroupsDatabaseService()))
+//                GroupPreviewView(viewModel: GroupViewModel(
+//                    apiService: APIRequest(),
+//                    realmStorage: GroupsDatabaseService()))
             }
             .tabItem {
                 Image(systemName: "person.2.crop.square.stack.fill")
@@ -38,11 +42,11 @@ struct NavigationTabView: View {
             .tag(1)
             
             NavigationView {
-                NewsPreviewView(viewModel: NewsViewModel(
-                    apiService: APIRequest(),
-                    realmStorage: NewsDatabaseService(),
-                    realmNewsGroups: NewsGroupsDatabaseService()
-                ))
+//                NewsPreviewView(viewModel: NewsViewModel(
+//                    apiService: APIRequest(),
+//                    realmStorage: NewsDatabaseService(),
+//                    realmNewsGroups: NewsGroupsDatabaseService()
+//                ))
             }
             .tabItem {
                 Image(systemName: "newspaper.fill")
@@ -52,9 +56,3 @@ struct NavigationTabView: View {
         }
     }
 }
-
-//struct NavigationTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationTabView()
-//    }
-//}

@@ -17,6 +17,7 @@ struct UserPreviewView: View {
     @State private var showLoginScreen = false
     
     @ObservedObject var viewModel: UserViewModel
+    @ObservedObject var loginModel: LoginViewModel
     
     @ObservedResults(UserModel.self) var friends
     
@@ -57,13 +58,16 @@ struct UserPreviewView: View {
             }
             .onAppear(perform: self.viewModel.getFriendsData)
             .listStyle(GroupedListStyle())
-            .fullScreenCover(isPresented: $showLoginScreen) {
-                LoginView()
-            }
             .navigationTitle("Список друзей")
-            .navigationBarItems(trailing:
-            Button(action: { showLoginView() })
-            { Text("Log Out") })
+            
+            // Кнопку пока убрал, так как для этого нужно на координатор перевести Пользователей. Как я понимаю повторная попытка входа с экрана логина вызывает вторую сущность MainTabCoordtinator, и это ведёт к конфликту/ Если верить ошибке компилятора...
+            
+//            .fullScreenCover(isPresented: $showLoginScreen) {
+//                LoginView(viewModel: loginModel)
+//            }
+//            .navigationBarItems(trailing:
+//            Button(action: { showLoginView() })
+//            { Text("Log Out") })
         }
         .navigationBarHidden(true)
     }
@@ -71,4 +75,5 @@ struct UserPreviewView: View {
     func showLoginView() {
         showLoginScreen.toggle()
     }
+    
 }

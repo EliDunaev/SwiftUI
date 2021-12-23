@@ -10,13 +10,13 @@ import Combine
 
 struct LoginView: View {
     
+    @ObservedObject var viewModel: LoginViewModel
+    
     @State private var login = ""
     @State private var password = ""
-    
-    @State private var showMainScreen = false
-    @State private var showIncorrentCredentialsWarning = false
-    
     @AppStorage("vkToken") var token: String?
+    
+    @State private var showIncorrentCredentialsWarning = false
     
     var body: some View {
         ZStack {
@@ -47,13 +47,6 @@ struct LoginView: View {
                                 .textFieldStyle()
                         }
                     }.vStackStyle()
-                        .fullScreenCover(isPresented: $showMainScreen) {
-                            if self.token != nil {
-                                NavigationTabView()
-                            } else {
-                                VKLoginWebView()
-                            }
-                        }
                         .alert(isPresented: $showIncorrentCredentialsWarning, content: { Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
                         })
                     Button(action: verifyLoginData) {
@@ -67,6 +60,7 @@ struct LoginView: View {
                 .padding(.top, 50)
             }
         }
+        .navigationBarHidden(true)
     }
     
     private let keyboardIsOnPublisher = Publishers.Merge(
@@ -78,10 +72,11 @@ struct LoginView: View {
         .removeDuplicates()
     
     private func verifyLoginData() {
-        if login == "1" && password == "1" {
-            showMainScreen.toggle()
+        if login == "1" && password == "1" && token != nil {
+            self.viewModel.isUserLoggedIn = true
         } else {
-            showIncorrentCredentialsWarning = true
+//            showIncorrentCredentialsWarning = true
+            self.viewModel.isUserLoggedIn = false
         }
         password = ""
     }
@@ -92,9 +87,3 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}
