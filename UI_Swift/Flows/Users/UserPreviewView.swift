@@ -29,7 +29,7 @@ struct UserPreviewView: View {
                         viewModel: UserPhotosViewModel(
                             apiService: APIRequest(),
                             realmStorage: PhotoDatabaseService(),
-                            userID: user.id!
+                            userID: user.id
                         ))) {
                             HStack {
                                 if user.online == 1 {

@@ -54,7 +54,7 @@ final class APIRequest {
     }
     
     //    MARK: - GET USER PHOTOS
-    func getPhoto(userID: String) {
+    func getPhoto(userID: Int) {
         
         let method = "/photos.getAll"
         let parameters: Parameters = [
@@ -160,6 +160,37 @@ final class APIRequest {
                 }
                 
             }
+        }
+    }
+    
+    //    MARK: - LIKE ADD & DELETE
+    func likeAdd(itemId: Int, ownerId: Int) {
+        let method = "/likes.add"
+        let parameters: Parameters = [
+            "type": "photo",
+            "owner_id": ownerId,
+            "item_id": itemId,
+            "access_token": token,
+            "v": version]
+        let url = baseUrl + method
+        
+        AF.request(url, method: .post, parameters: parameters).responseData { response in
+            print("# \(response as Any)")
+        }
+    }
+    
+    func likeDelete(itemId: Int, ownerId: Int) {
+        let method = "/likes.delete"
+        let parameters: Parameters = [
+            "type": "photo",
+            "owner_id": ownerId,
+            "item_id": itemId,
+            "access_token": token,
+            "v": version]
+        let url = baseUrl + method
+        
+        AF.request(url, method: .post, parameters: parameters).responseData { response in
+            print("# \(response as Any)")
         }
     }
 }

@@ -9,39 +9,68 @@ import SwiftUI
 
 struct PhotoGalleryFooter: View {
     
+    @ObservedObject var viewModel: UserPhotosViewModel
+    
     @State private var isLike = false
-    @State private var testLikes = 0
-    @State private var isUserLike = false
-    @State private var likeImage = "hand.thumbsup"
     
     var photoFooterData: PhotoModel
+    let apiService: APIRequest
     
     
     var body: some View {
-        HStack(alignment: .top) {
-            Image(systemName: likeImage)
-                .rotationEffect(Angle.degrees(isLike ? 45 : 0))
-                .animation(.interpolatingSpring(stiffness: 200, damping: 10), value: isLike)
-                .highPriorityGesture (
-                    DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                        .onChanged {_ in
-                            self.isLike.toggle()
-                            if !isUserLike {
-                                self.testLikes += 1
-                                self.isUserLike = true
-                                self.likeImage = "hand.thumbsup.fill"
-                            } else {
-                                self.testLikes -= 1
-                                self.isUserLike = false
-                                self.likeImage = "hand.thumbsup"
-                            }
-                        }
-                        .onEnded{ _ in
-                            self.isLike.toggle()
-                        }
-                )
-            Text("\(self.testLikes)") //Тестовая модель лайков
-//            Text(String(photoFooterData.likes))
+        GeometryReader { proxy in
+            HStack(alignment: .center) {
+                if self.photoFooterData.userLikes == 0 {
+                    Image(systemName: "hand.thumbsup")
+                        .rotationEffect(Angle.degrees(isLike ? 45 : 0))
+                        .animation(.interpolatingSpring(stiffness: 200, damping: 10), value: isLike)
+                        .highPriorityGesture (
+                            TapGesture()
+                                .onEnded{ _ in
+                                    if self.photoFooterData.userLikes == 0 {
+                                        self.apiService.likeAdd(itemId: self.photoFooterData.photoId, ownerId: self.photoFooterData.ownerId)
+                                    } else {
+                                        self.apiService.likeDelete(itemId: self.photoFooterData.photoId, ownerId: self.photoFooterData.ownerId)
+                                    }
+                                    self.isLike = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        self.viewModel.getPhotoData()
+                                        isLike = false
+                                    }
+                                }
+                        )
+                        .preference(key: FooterHeightPreferenceKey.self, value: proxy.size.width)
+                } else {
+                    Image(systemName: "hand.thumbsup.fill")
+                        .rotationEffect(Angle.degrees(isLike ? 45 : 0))
+                        .animation(.interpolatingSpring(stiffness: 200, damping: 10), value: isLike)
+                        .highPriorityGesture (
+                            TapGesture()
+                                .onEnded{ _ in
+                                    if self.photoFooterData.userLikes == 0 {
+                                        self.apiService.likeAdd(itemId: self.photoFooterData.photoId, ownerId: self.photoFooterData.ownerId)
+                                    } else {
+                                        self.apiService.likeDelete(itemId: self.photoFooterData.photoId, ownerId: self.photoFooterData.ownerId)
+                                    }
+                                    self.isLike = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        self.viewModel.getPhotoData()
+                                        isLike = false
+                                    }
+                                }
+                        )
+                        .preference(key: FooterHeightPreferenceKey.self, value: proxy.size.width)
+                }
+                Text(String(photoFooterData.likes))
+            }
         }
+    }
+}
+
+struct FooterHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
     }
 }

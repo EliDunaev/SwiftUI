@@ -11,7 +11,7 @@ import RealmSwift
 
 class UserModel: Object, Identifiable {
     
-    @Persisted var id: String?
+    @Persisted var id: Int
     @Persisted var sex: Int = 0
     @Persisted var firstName: String?
     @Persisted var bdate: String? = nil
@@ -25,7 +25,7 @@ class UserModel: Object, Identifiable {
     convenience required init(data: JSON) {
         self.init()
         
-        self.id = data.id.string
+        self.id = data.id.int!
         self.sex = data.sex.int!
         self.firstName = data.first_name.string
         self.bdate = data.bdate.string
