@@ -19,7 +19,7 @@ struct NewsPreviewView: View {
     var body: some View {
         NavigationView {
             List() {
-                ForEach(news, id: \.date) { news in
+                ForEach(news.sorted { $0.date > $1.date }, id: \.date) { news in
                     VStack {
                         ForEach(newsGroups) { groups in
                             if groups.id == news.sourceId {
@@ -47,10 +47,11 @@ struct NewsPreviewView: View {
                     }
                 }
             }
+            .refreshable{ self.viewModel.getNews() }
             .navigationTitle("Новости")
             .listStyle(GroupedListStyle())
         }
-        .navigationBarHidden(true)
         .onAppear(perform: self.viewModel.getNews)
+        .navigationBarHidden(true)
     }
 }

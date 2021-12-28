@@ -14,16 +14,31 @@ struct PhotoCell: View {
     
     var body: some View {
         if photos.url == nil {
-            KFImage(URL(string: "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"))
-                .resizable()
-                .setProcessor(ResizingImageProcessor(referenceSize: CGSize(width: 500 , height: 500), mode: .aspectFit))
-                .cancelOnDisappear(true)
-
+            GeometryReader { proxy in
+                KFImage(URL(string: "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"))
+                    .cancelOnDisappear(true)
+                    .resizable()
+                    .frame(width: proxy.size.width)
+                    .aspectRatio(2, contentMode: .fill)
+                    .preference(key: PhotoHeightPreferenceKey.self, value: proxy.size.width)
+            }
         } else {
-            KFImage(URL(string: photos.url!))
-                .resizable()
-                .setProcessor(ResizingImageProcessor(referenceSize: CGSize(width: 500 , height: 500), mode: .aspectFit))
-                .cancelOnDisappear(true)
+            GeometryReader { proxy in
+                KFImage(URL(string: photos.url!))
+                    .cancelOnDisappear(true)
+                    .resizable()
+                    .frame(width: proxy.size.width)
+                    .aspectRatio(2, contentMode: .fill)
+                    .preference(key: PhotoHeightPreferenceKey.self, value: proxy.size.width)
+            }
         }
+    }
+}
+
+struct PhotoHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
     }
 }

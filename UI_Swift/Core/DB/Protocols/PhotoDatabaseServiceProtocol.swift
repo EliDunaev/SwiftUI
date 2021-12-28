@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol PhotoDatabaseServiceProtocol {
     func add(photos: [PhotoModel])
-    func read(userID: String) -> [PhotoModel]
+    func read(userID: Int) -> [PhotoModel]
     func delete(photo: PhotoModel)
-    func readResults(userID: String) -> Results<PhotoModel>?
+    func readResults(userID: Int) -> Results<PhotoModel>?
 }

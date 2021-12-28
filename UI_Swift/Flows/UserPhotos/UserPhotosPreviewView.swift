@@ -16,21 +16,42 @@ struct UserPhotosPreviewView: View {
     
     @ObservedResults(PhotoModel.self) var photos
     
+    @State private var photoHeightRow: CGFloat?
+    @State private var footerHeightRow: CGFloat?
+    
     var body: some View {
-        ASCollectionView(data: photos, dataID: \.url) { photo, _ in
-            if photo.id == self.viewModel.userID {
-                PhotoCell(photos: photo)
-                PhotoGalleryFooter(photoFooterData: photo)
+        
+        let columns = [
+            GridItem(.adaptive(minimum: 100, maximum: .infinity), spacing: 5)
+        ]
+        
+        GeometryReader { geometry in
+            ScrollView(.vertical) {
+                Spacer()
+                LazyVGrid(columns: columns, alignment: .center, spacing: 0)  {
+                    ForEach(photos, id: \.url) { photo in
+                        if photo.ownerId == self.viewModel.userID {
+                            VStack {
+                                PhotoCell(photos: photo)
+                                    .frame(height: photoHeightRow)
+                                Divider()
+                                PhotoGalleryFooter(viewModel: viewModel, photoFooterData: photo, apiService: APIRequest())
+                                    .frame(height: footerHeightRow)
+                                    .padding(.bottom)
+                            }
+                        }
+                    }
+                }
             }
+            .padding([.leading, .trailing], 10)
+            .onPreferenceChange(PhotoHeightPreferenceKey.self, perform: { value in
+                self.photoHeightRow = value
+            })
+            .onPreferenceChange(FooterHeightPreferenceKey.self, perform: { value in
+                self.photoHeightRow = value
+            })
         }
-        .layout {
-            ASCollectionLayoutSection.grid(
-                layoutMode: .adaptive(withMinItemSize: 120),
-                itemSpacing: 1,
-                lineSpacing: 1
-            )
-        }
-        .navigationTitle("Фото Альбом")
+        .navigationBarTitle(Text("Фото Альбом"), displayMode: .inline)
         .onAppear(perform: self.viewModel.getPhotoData)
     }
 }

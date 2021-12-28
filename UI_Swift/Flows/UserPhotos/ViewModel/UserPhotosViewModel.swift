@@ -12,14 +12,14 @@ import RealmSwift
 
 class UserPhotosViewModel: ObservableObject {
     
-    var userID: String
+    var userID: Int
     
     private let apiService: APIRequest
     private let realmStorage: PhotoDatabaseService
     
     @Published private(set) var photos: [PhotoModel] = []
     
-    init(apiService: APIRequest, realmStorage: PhotoDatabaseService, userID: String) {
+    init(apiService: APIRequest, realmStorage: PhotoDatabaseService, userID: Int) {
         self.userID = userID
         self.apiService = apiService
         self.realmStorage = realmStorage

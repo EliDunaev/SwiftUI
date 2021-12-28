@@ -10,8 +10,9 @@ import DynamicJSON
 import RealmSwift
 
 class PhotoModel: Object, Identifiable {
-
-    @Persisted var id: String?
+    
+    @Persisted var photoId: Int
+    @Persisted var ownerId: Int
     @Persisted var url: String?
     @Persisted var userLikes = 0
     @Persisted var likes = 0
@@ -19,7 +20,8 @@ class PhotoModel: Object, Identifiable {
     convenience required init(data: JSON) {
         self.init()
         
-        self.id = data.owner_id.string
+        self.photoId = data.id.int!
+        self.ownerId = data.owner_id.int!
         self.url = data["sizes"][7].url.string
         if self.url == nil {
             self.url = data["sizes"][5].url.string
@@ -30,6 +32,6 @@ class PhotoModel: Object, Identifiable {
     }
     
     override static func primaryKey() -> String? {
-        return "url"
+        return "photoId"
     }
 }
